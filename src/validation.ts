@@ -18,6 +18,25 @@ const app = new Elysia()
       })
     }
   )
+
+app.get(
+  "/products/:id",
+  ({ params, query }) => ({ params, query }),
+  {
+    
+    params: t.Object({
+      id: t.Number()
+    }),
+
+    query: t.Object({
+      sort: t.Optional(
+        t.String({
+          enum: ["asc", "desc"]})
+      )
+    })
+  }
+)
+
   .listen(3000);
 
 

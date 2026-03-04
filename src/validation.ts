@@ -37,6 +37,22 @@ app.get(
   }
 )
 
+app.get(
+  "/stats",
+  () => {
+    return {
+      total: 100,
+      active: 75
+    };
+  },
+  {
+    response: t.Object({
+      total: t.Number(),
+      active: t.Number()
+    })
+  }
+)
+
   .listen(3000);
 
 

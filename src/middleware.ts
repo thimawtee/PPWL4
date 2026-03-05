@@ -2,6 +2,13 @@ import { Elysia, t } from "elysia";
 import { openapi } from "@elysiajs/openapi";
 
 const app = new Elysia().use(openapi());
+// Global Logger
+app.onRequest(({ request }) => {
+ console.log("📥", request.method, request.url)
+ console.log("🕒", new Date().toISOString())
+})
+
+app.get("/", () => "Hello Middleware")
 
 app.get(
   "/admin",
